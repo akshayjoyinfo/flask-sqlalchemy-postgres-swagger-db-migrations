@@ -46,6 +46,6 @@ jobs:
     - name: Run pyest
       env:
         CONFIG_MODE: 'pytest'
-        PYTEST_DATABASE_URL: 'postgresql://postgres:postgres@postgres:5432/bookmarksghtest'
+        PYTEST_DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/bookmarksghtest'
       run: |
         pipenv run pytest -s
