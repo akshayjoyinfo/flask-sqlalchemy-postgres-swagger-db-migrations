@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  bookamrks-pytest:
 
     runs-on: ubuntu-latest
     services:
@@ -48,4 +48,4 @@ jobs:
         CONFIG_MODE: 'pytest'
         PYTEST_DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/bookmarksghtest'
       run: |
-        pipenv run pytest -s
+        pipenv run pytest --cov
