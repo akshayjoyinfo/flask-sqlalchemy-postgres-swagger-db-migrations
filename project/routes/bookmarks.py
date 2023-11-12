@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, current_app
 import validators
 from flasgger import swag_from
 
-from project.constants.http_status_codes import HTTP_200_OK, HTTP_201_CREATED
+from project.constants.http_status_codes import HTTP_200_OK, HTTP_201_CREATED,HTTP_204_NO_CONTENT,HTTP_400_BAD_REQUEST
 from project.models.bookmark import BookmarkModel
 from project.routes import API_PREFIX
 
@@ -13,17 +13,15 @@ bookmarks = Blueprint("Bookmarks", __name__, url_prefix=API_PREFIX + BOOKMARKS_P
 @bookmarks.post("")
 @swag_from('../docs/bookmarks/create.yaml')
 def create_bookmark():
-    
+
     body = request.get_json().get('body', '')
     url = request.get_json().get('url', '')
-
     if not validators.url(url):
         return jsonify({
             'error': 'Enter a valid url'
-        }), HTTP_200_OK
+        }), HTTP_400_BAD_REQUEST
 
     bookmark = BookmarkModel(body=body, url=url, visits=1)
-
     bookmark.save_to_db()
 
     current_app.logger.info('Bookmark created', extra={
@@ -69,3 +67,42 @@ def get_bookmarks():
              'has_prev': bookmarks.has_prev
          }
     }), HTTP_200_OK
+
+@bookmarks.put("/<id>")
+@swag_from('../docs/bookmarks/put.yaml')
+def update_bookmark(id):
+    current_app.logger.info('Bookmarks id', extra={
+        'id': id
+    })
+    bookdata = BookmarkModel.find_by_id(id)
+    data = request.get_json()
+    if data.get('body'):
+        bookdata.body = data['body']
+    if data.get('url'):
+        bookdata.url = data['url']
+    bookdata.save_to_db()
+
+    return jsonify({
+         'results':  {
+             'body': bookdata.body,
+             'url': bookdata.url
+         }
+    }), HTTP_200_OK
+@bookmarks.delete("/<id>")
+@swag_from('../docs/bookmarks/delete.yaml')
+def delete_bookmark(id):
+    current_app.logger.info('Bookmarks id', extra={
+        'id': id
+    })
+    book_del_data = BookmarkModel.find_by_id(id)
+    if book_del_data==None:
+        print(())
+        return jsonify({
+            'message': 'No Content',
+        }), HTTP_204_NO_CONTENT
+    else:
+        book_del_data.delete_from_db()
+
+        return jsonify({
+            'message': 'Bookmark deleted',
+        }),HTTP_200_OK

@@ -1,0 +1,15 @@
+Delete Bookmarks
+
+---
+
+tags:
+  - Bookmarks
+parameters:
+  - in: path
+    name: id
+    schema:
+      type: number
+
+responses:
+        '400':
+          description: Invalid pet value

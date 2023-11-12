@@ -1,8 +1,13 @@
-Create Bookmark
+Update Bookmarks
 ---
+
 tags:
   - Bookmarks
 parameters:
+  - in: path
+    name: id
+    schema:
+      type: number
   - name: body
     description: The body should contain the Bookmarks details
     in: body
@@ -20,6 +25,7 @@ parameters:
           type: "string"
           format: url
           example: "http://some.com"
+
 responses:
-  201:
-    description: When Bookmark created
+  200:
+    description: When Bookmark Updated

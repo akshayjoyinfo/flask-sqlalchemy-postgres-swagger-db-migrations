@@ -1,7 +1,7 @@
 from project.app import create_app
 from project.app import db
 import pytest
-from flask_migrate import upgrade
+from flask_migrate import upgrade,downgrade
 
 @pytest.fixture
 def app():
@@ -10,7 +10,6 @@ def app():
     with test_app.app_context():
         upgrade()
     yield test_app
-    
 @pytest.fixture
 def client(app):
     return app.test_client()
