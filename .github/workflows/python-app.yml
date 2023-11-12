@@ -27,6 +27,5 @@ jobs:
       run: pip install pipenv
     - name: Install dependencies
       run: |
-        pipenv shell
-        pipenv install
-        pipenv install --dev
+        pipenv lock -r > requirements.txt
+        pip install -r requirements.txt
