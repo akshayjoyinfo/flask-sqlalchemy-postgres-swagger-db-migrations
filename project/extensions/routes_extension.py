@@ -1,5 +1,5 @@
 
-from ..routes.bookmarks import bookmarks
+from project.routes.bookmarks import bookmarks
 
 
 class RouteExtension(object):

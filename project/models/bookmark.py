@@ -1,6 +1,6 @@
 import random
 
-from .base_model import BaseModel, db
+from project.models.base_model import BaseModel, db
 import string
 
 

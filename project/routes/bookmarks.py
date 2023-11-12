@@ -2,9 +2,9 @@ from flask import Blueprint, request, jsonify, current_app
 import validators
 from flasgger import swag_from
 
-from ..constants.http_status_codes import HTTP_200_OK, HTTP_201_CREATED
-from ..models.bookmark import BookmarkModel
-from ..routes import API_PREFIX
+from project.constants.http_status_codes import HTTP_200_OK, HTTP_201_CREATED
+from project.models.bookmark import BookmarkModel
+from project.routes import API_PREFIX
 
 BOOKMARKS_PREFIX: str = "/bookmarks"
 bookmarks = Blueprint("Bookmarks", __name__, url_prefix=API_PREFIX + BOOKMARKS_PREFIX)

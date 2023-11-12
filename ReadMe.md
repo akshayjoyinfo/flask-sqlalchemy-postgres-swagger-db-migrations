@@ -27,6 +27,8 @@ https://pipenv-es.readthedocs.io/es/stable/
 
 ![pipenv image](./images/pipenv-image.png)
 
+![pytest image](./images/pytest-image.png)
+
 
 ## Code with Me - step by step I created to reach current master
 
@@ -39,6 +41,10 @@ Always starts with pipenv shell
     pipenv run flask db migrate
     pipenv run flask db upgrade
     pipenv run flask run
-
+    pytest pytest -s              # update .env file with CONFIG_MODE=pytest
     
 ```
+
+Github action:
+
+https://medium.com/globant/how-to-add-a-basic-unit-test-to-a-python-flask-app-using-pytest-79e61da76fc2

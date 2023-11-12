@@ -1,4 +1,4 @@
-from ..config.swagger import swagger_config, template
+from project.config.swagger import swagger_config, template
 from flasgger import Swagger
 
 
