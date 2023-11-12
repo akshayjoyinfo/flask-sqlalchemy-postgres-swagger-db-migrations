@@ -1,0 +1,7 @@
+List Bookmarks
+---
+tags:
+  - Bookmarks
+responses:
+  200:
+    description: Retrieved List of Bookmarks

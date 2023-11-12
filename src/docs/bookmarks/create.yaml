@@ -1,0 +1,25 @@
+Create Bookmark
+---
+tags:
+  - Bookmarks
+parameters:
+  - name: body
+    description: The body should contain the Bookmarks details
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - "body"
+        - "url"
+      properties:
+        body:
+          type: "string"
+          example: "Sample Body Bookmark"
+        url:
+          type: "string"
+          format: url
+          example: "http://some.com"
+responses:
+  201:
+    description: When Bookmark created
