@@ -28,8 +28,10 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install
+
+    - name: Install dependencies dev
+      run: |
         pipenv install --dev
-  
     - name: Run pyest
       env:
         CONFIG_MODE: 'pytest'
