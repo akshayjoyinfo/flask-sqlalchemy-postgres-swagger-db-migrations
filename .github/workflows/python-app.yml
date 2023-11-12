@@ -32,6 +32,6 @@ jobs:
   
     - name: Run pyest
       env:
-        
+        CONFIG_MODE: 'pytest'
       run: |
         pytest -s
