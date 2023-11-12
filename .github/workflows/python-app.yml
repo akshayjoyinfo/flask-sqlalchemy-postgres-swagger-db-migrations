@@ -16,6 +16,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: bookmarksghtest
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v3
@@ -35,5 +45,6 @@ jobs:
     - name: Run pyest
       env:
         CONFIG_MODE: 'pytest'
+        PYTEST_DATABASE_URL: 'postgresql://postgres:postgres@postgres:5432/bookmarksghtest'
       run: |
         pipenv run pytest -s
