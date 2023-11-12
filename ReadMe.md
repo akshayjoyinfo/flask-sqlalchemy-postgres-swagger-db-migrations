@@ -34,11 +34,11 @@ Always starts with pipenv shell
 
 ```bash
     pipenv shell
-    pipenv install python-dotenv flask flask-sqlalchemy Flask-Migrate flask_validator psycopg2-binary   # look for Pipfile and Pipfile.lock files
+    pipenv install
+    pipenv run flask db init
+    pipenv run flask db migrate
+    pipenv run flask db upgrade
     pipenv run flask run
-    flask run
 
-    flask db init
-    flask db migrate
-    flask db upgrade
+    
 ```
