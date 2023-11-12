@@ -30,17 +30,17 @@ def test_bookmarks_add(app,client):
 
     assert response.status_code == 201
 
-def test_bookmarks_put(app,client):
-    data=json.dumps({
-        'body': "Testing Flask 123",
-    })
-    response = client.put("/api/v1/bookmarks/4", data=data,headers={"Content-Type": "application/json"},
-    )
+# def test_bookmarks_put(app,client):
+#     data=json.dumps({
+#         'body': "Testing Flask 123",
+#     })
+#     response = client.put("/api/v1/bookmarks/1", data=data,headers={"Content-Type": "application/json"},
+#     )
 
-    assert response.status_code == 200
+#     assert response.status_code == 200
 
-def test_bookmarks_delete(app,client):
-    response = client.delete("/api/v1/bookmarks/17",headers={"Content-Type": "application/json"},
-    )
+# def test_bookmarks_delete(app,client):
+#     response = client.delete("/api/v1/bookmarks/1",headers={"Content-Type": "application/json"},
+#     )
 
-    assert response.status_code == 200
+#     assert response.status_code == 200

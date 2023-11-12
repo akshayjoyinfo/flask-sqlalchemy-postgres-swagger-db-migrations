@@ -16,6 +16,7 @@ validators = "==0.18.2"
 
 [dev-packages]
 pytest = "==7.4.3"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.9"
