@@ -36,4 +36,4 @@ jobs:
       env:
         CONFIG_MODE: 'pytest'
       run: |
-        pytest -s
+        pipenv run pytest -s
